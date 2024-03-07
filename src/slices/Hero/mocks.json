@@ -1,0 +1,24 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"douglas": {
+				"__TYPE__": "FieldContent",
+				"value": "plural",
+				"type": "Text"
+			},
+			"santana": {
+				"__TYPE__": "FieldContent",
+				"value": "red",
+				"type": "Text"
+			},
+			"backend_developer": {
+				"__TYPE__": "FieldContent",
+				"value": "taken",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]

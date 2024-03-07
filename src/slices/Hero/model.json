@@ -1,0 +1,40 @@
+{
+  "id": "hero",
+  "type": "SharedSlice",
+  "name": "Hero",
+  "description": "Hero",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "douglas": {
+          "type": "Text",
+          "config": {
+            "label": "Douglas",
+            "placeholder": ""
+          }
+        },
+        "santana": {
+          "type": "Text",
+          "config": {
+            "label": "Santana",
+            "placeholder": ""
+          }
+        },
+        "backend_developer": {
+          "type": "Text",
+          "config": {
+            "label": "Backend Developer",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
