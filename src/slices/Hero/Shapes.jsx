@@ -25,7 +25,7 @@ export default function Shapes() {
             blur={1}
             far={9}
           />
-          <Environment preset="studio" />
+          <Environment preset="dawn" />
         </Suspense>
       </Canvas>
     </div>
@@ -47,7 +47,7 @@ function Geometries() {
     {
       position: [-1.4, 2, -4],
       r: 0.6,
-      geometry: new THREE.DodecahedronGeometry(1.5), // Bola
+      geometry: new THREE.ConeGeometry(1.5, 3), // Bola
     },
     {
       position: [-0.8, -0.75, 5],
@@ -72,10 +72,17 @@ function Geometries() {
     new THREE.MeshStandardMaterial({ color: 0x8e44ad, roughness: 0.1 }),
   ];
 
+  const soundEffects = [
+    new Audio("/sounds/knock1.ogg"),
+    new Audio("/sounds/knock2.ogg"),
+    new Audio("/sounds/knock3.ogg"),
+  ];
+
   return geometries.map(({ position, r, geometry }) => (
     <Geometry
       key={JSON.stringify(position)}
       position={position.map((p) => p * 2)}
+      soundEffects={soundEffects}
       geometry={geometry}
       materials={materials}
       r={r}
@@ -83,7 +90,7 @@ function Geometries() {
   ));
 }
 
-function Geometry({ r, position, geometry, materials }) {
+function Geometry({ r, position, geometry, materials, soundEffects }) {
   const meshRef = useRef();
   const [visible, setVisible] = useState(false);
 
@@ -95,6 +102,8 @@ function Geometry({ r, position, geometry, materials }) {
 
   function handleClick(e) {
     const mesh = e.object;
+
+    gsap.utils.random(soundEffects).play();
 
     gsap.to(mesh.rotation, {
       x: `+=${gsap.utils.random(0, 2)}`,
