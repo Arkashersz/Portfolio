@@ -76,34 +76,34 @@ export type AllDocumentTypes = HomepageDocument;
  */
 export interface HeroSliceDefaultPrimary {
   /**
-   * Douglas field in *Hero → Primary*
+   * first_name field in *Hero → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: hero.primary.douglas
+   * - **API ID Path**: hero.primary.first_name
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  douglas: prismic.KeyTextField;
+  first_name: prismic.KeyTextField;
 
   /**
-   * Santana field in *Hero → Primary*
+   * last_name field in *Hero → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: hero.primary.santana
+   * - **API ID Path**: hero.primary.last_name
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  santana: prismic.KeyTextField;
+  last_name: prismic.KeyTextField;
 
   /**
-   * Backend Developer field in *Hero → Primary*
+   * tag field in *Hero → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: hero.primary.backend_developer
+   * - **API ID Path**: hero.primary.tag
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  backend_developer: prismic.KeyTextField;
+  tag: prismic.KeyTextField;
 }
 
 /**

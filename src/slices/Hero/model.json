@@ -12,24 +12,24 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
-        "douglas": {
+        "first_name": {
           "type": "Text",
           "config": {
-            "label": "Douglas",
+            "label": "first_name",
             "placeholder": ""
           }
         },
-        "santana": {
+        "last_name": {
           "type": "Text",
           "config": {
-            "label": "Santana",
+            "label": "last_name",
             "placeholder": ""
           }
         },
-        "backend_developer": {
+        "tag": {
           "type": "Text",
           "config": {
-            "label": "Backend Developer",
+            "label": "tag",
             "placeholder": ""
           }
         }
