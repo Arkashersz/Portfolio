@@ -1,9 +1,13 @@
 "use client";
 
 import { Content, asImageSrc, isFilled } from '@prismicio/client';
+import gsap from 'gsap';
 import Link from 'next/link';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { MdArrowOutward } from 'react-icons/md';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger)
 
 type ContentListProps = {
     items: Content.BlogPostDocument[] | Content.ProjectDocument[];
@@ -19,12 +23,70 @@ export default function ContentList({
     fallbackItemImage,
     viewMoreText = "Read More",
 }: ContentListProps) {
-    const component = useRef(null)
+    const component = useRef(null);
+    const revealRef = useRef(null);
+    const itemsRef = useRef<Array<HTMLLIElement | null>>([]);
     const [currentItem, setCurrentItem] = useState<null | number>
-        (null)
+        (null);
+
+    const lastMousePos = useRef({ x: 0, y: 0 })
 
     const urlPrefix = contentType === "Blog" ? "/blog" : "/project";
-    const contentImages = items.map((item) => {
+
+    useEffect(() => {
+        let ctx = gsap.context(() => {
+            itemsRef.current.forEach((item) => {
+                gsap.fromTo(item,
+                    { opacity: 0, y: 20 }, {
+                    opacity: 1,
+                    duration: 1.3,
+                    ease: "eastic.out(1,0.3)",
+                    stagger: 0.2,
+                    scrollTrigger: {
+                        trigger: item,
+                        start: "top bottom-=100px",
+                        end: "bottom center",
+                        toggleActions: "play none none none"
+                    }
+                })
+            })
+        })
+    })
+
+    useEffect(() => {
+        const handleMouseMove = (e: MouseEvent) => {
+            const mousePos = { x: e.clientX, y: e.clientY + window.scrollY }
+
+            //Calcular velocidade e direção
+            const speed = Math.sqrt(Math.pow(mousePos.x - lastMousePos.current.x, 2))
+
+            let ctx = gsap.context(() => {
+                if (currentItem != null) {
+                    const maxY = window.scrollY + window.innerHeight - 350;
+                    const maxX = window.innerWidth - 250;
+
+                    gsap.to(revealRef.current, {
+                        x: gsap.utils.clamp(0, maxX, mousePos.x - 110),
+                        Y: gsap.utils.clamp(0, maxY, mousePos.y - 160),
+                        rotation: speed * (mousePos.x > lastMousePos.current.x ? 1 : -1),
+                        ease: "back.out(2)",
+                        duration: 1.3,
+                        opacity: 1,
+                    });
+                }
+                lastMousePos.current = mousePos;
+                return () => ctx.revert();
+            }, component);
+        };
+
+        window.addEventListener("mousemove", handleMouseMove)
+
+        return () => {
+            window.removeEventListener("mousemove", handleMouseMove);
+        };
+    }, [currentItem]);
+
+    const contentImages = [...items, ...items, ...items, ...items, ...items, ...items,].map((item) => {
         const image = isFilled.image(item.data.hover_image)
             ? item.data.hover_image
             : fallbackItemImage;
@@ -48,13 +110,14 @@ export default function ContentList({
 
     return (
         <div ref={component}>
-            <ul className='grid border-b border-b-slate-100'>
-                {items.map((item, index) => (
+            <ul className='grid border-b border-b-slate-100' onMouseLeave={onMouseLeave}>
+                {[...items, ...items, ...items, ...items, ...items, ...items,].map((item, index) => (
                     <>
                         {isFilled.keyText(item.data.title) && (
 
                             <li key={index} className='list-item opacity-0f'
                                 onMouseEnter={() => onMouseEnter(index)}
+                                ref={(el) => (itemsRef.current[index] = el)}
                             >
                                 <Link
                                     href={urlPrefix + "/" + item.uid}
@@ -88,7 +151,7 @@ opacity-0 transition-[background] duration-300'
                     backgroundImage: currentItem != null ? `url($
                         {contentImages[currentItem]})` : "",
                 }}
-
+                ref={revealRef}
             ></div>
         </div>
     )
