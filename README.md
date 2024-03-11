@@ -1,36 +1,18 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Portfolio
+Bem-vindo ao repositório do meu projeto de portfolio! Este é um espaço onde eu demonstro minhas habilidades, projetos e experiências. Desenvolvi este site utilizando uma variedade de tecnologias modernas para proporcionar uma experiência dinâmica e envolvente.
 
-## Getting Started
+# Tecnologias Utilizadas
+- **Next.js:** O framework React utilizado para criar aplicações web modernas e eficientes. Com o Next.js, conseguimos renderização do lado do servidor (SSR), otimização de SEO e uma estrutura de pastas organizada.
 
-First, run the development server:
+- **TypeScript:** Adotei o TypeScript para adicionar tipagem estática ao meu código, facilitando a detecção de erros durante o desenvolvimento e melhorando a manutenibilidade do projeto.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Tailwind CSS:** Um framework de estilo utilitário que permite a criação rápida e consistente de interfaces. Com classes simples, é possível criar designs responsivos e atraentes.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **GSAP (GreenSock Animation Platform):** Utilizei o GSAP para criar animações suaves e atraentes em todo o site. Isso proporciona uma experiência mais envolvente aos visitantes.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Prismic:** Um sistema de gerenciamento de conteúdo (CMS) que facilita a criação, edição e publicação de conteúdo. Usei o Prismic para gerenciar dinamicamente os dados do meu portfolio.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+# Contribuições
+Sinta-se à vontade para contribuir, reportar problemas ou sugerir melhorias. Estou aberto a colaborações para tornar este portfolio ainda melhor!
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Obrigado por explorar meu trabalho! 🚀
