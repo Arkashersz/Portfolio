@@ -1,11 +1,10 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
-import { asImageSrc, isFilled } from "@prismicio/client";
+import { Content, asImageSrc, isFilled } from "@prismicio/client";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useEffect, useRef, useState } from "react";
 import { MdArrowOutward } from "react-icons/md";
-import { Content } from "@prismicio/client";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -30,7 +29,7 @@ export default function ContentList({
   const [hovering, setHovering] = useState(false);
   const lastMousePos = useRef({ x: 0, y: 0 });
 
-  const urlPrefix = contentType === "Blogs" ? "/blog" : "/project";
+  const urlPrefix = contentType === "Blog" ? "/blog" : "/projetos";
 
   useEffect(() => {
     // Animate list-items in with a stagger
