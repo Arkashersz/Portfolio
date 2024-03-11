@@ -1,5 +1,5 @@
 import Bounded from "@/components/Bounded";
-import ContentList from "@/components/ContentList";
+import ContentList from "@/slices/ContentIndex/ContentList";
 import Heading from "@/components/Heading";
 import { createClient } from "@/prismicio";
 import { Content, isFilled } from "@prismicio/client";

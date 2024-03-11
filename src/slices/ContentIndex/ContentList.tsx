@@ -2,10 +2,10 @@
 
 import { Content, asImageSrc, isFilled } from '@prismicio/client';
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { MdArrowOutward } from 'react-icons/md';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -31,7 +31,7 @@ export default function ContentList({
 
     const lastMousePos = useRef({ x: 0, y: 0 })
 
-    const urlPrefix = contentType === "Blog" ? "/blog" : "/project";
+    const urlPrefix = contentType === "Blog" ? "/blog" : "/projetos";
 
     useEffect(() => {
         let ctx = gsap.context(() => {
